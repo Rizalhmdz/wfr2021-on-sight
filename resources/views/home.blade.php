@@ -49,7 +49,7 @@
         
         @foreach ($books as $book)
           <div class="col-lg-3 col-md-3 portfolio-item filter-app">
-            <img src="assets/img/cover/the last professional.jpg"" class="img-fluid" alt="">
+            <img src="assets/img/cover/the last professional.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>{{ $book->title }}</h4>
               <p>{{ $book->author }}</p>

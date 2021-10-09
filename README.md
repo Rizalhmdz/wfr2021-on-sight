@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="assets/img/readme-theme.png" width="1280"/>
+    <img src="https://github.com/Rizalmhmmd13zx/wfr2021-on-sight/blob/master/public/assets/img/readme-theme.png" width="1280"/>
 </p>
 
 ## Onsight
