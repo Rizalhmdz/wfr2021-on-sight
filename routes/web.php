@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    
+    return view('home', [
+        "title" => "Home",
+        "books" => Book::all()
+    ]);
+});
+
+Route::get('/chart', function () {
+    return view('chart', [
+        "title" => "Chart"
+    ]);
 });
 
 Route::get('/login', function () {
@@ -27,4 +39,11 @@ Route::get('/signup', function () {
 
 Route::get('/admin', function () {
     return view('admin');
+});
+
+Route::get('/book', function (){
+    return view('book', [
+        "title" => "books",
+        "books" => book::all()
+    ]);
 });
