@@ -3,6 +3,7 @@
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -20,11 +21,11 @@ use App\Http\Controllers\BookController;
 Route::get('/', [BookController::class, 'index']);
 
 
-Route::get('/chart', function () {
-    return view('chart', [
-        "title" => "Chart"
-    ]);
-});
+// Route::get('/chart', function () {
+//     return view('chart', [
+//         "title" => "Chart"
+//     ]);
+// });
 
 Route::get('/login', function () {
     return view('login');
@@ -34,12 +35,16 @@ Route::get('/signup', function () {
     return view('signup');
 });
 
+// Route::get('/admin', [AdminController::class, 'table']);
+
+// Route::get('/admin/{title}', [AdminController::class, 'table_books']);
+
 Route::get('/admin', function () {
     return view('admin');
 });
 
-Route::get('/book', function (){
-    return view('book');
+Route::get('/books', function (){
+    return view('table');
 });
 
 Route::get('/{book:slug}', [BookController::class, 'show']);

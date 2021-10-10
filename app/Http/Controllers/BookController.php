@@ -11,9 +11,10 @@ class BookController extends Controller
     public function index(){
         return view('home', [
             "title" => "Books",
-            "books" => book::all()
+            "books" => Book::all()
         ]);
     }
+
 
     public function show(Book $book){
         return view('book', [
