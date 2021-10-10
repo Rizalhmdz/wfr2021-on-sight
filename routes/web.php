@@ -2,6 +2,7 @@
 
 use App\Models\Book;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 
 /*
@@ -15,13 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    
-    return view('home', [
-        "title" => "Home",
-        "books" => Book::all()
-    ]);
-});
+
+Route::get('/', [BookController::class, 'index']);
+
 
 Route::get('/chart', function () {
     return view('chart', [
@@ -42,8 +39,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/book', function (){
-    return view('book', [
-        "title" => "books",
-        "books" => book::all()
-    ]);
+    return view('book');
 });
+
+Route::get('/{book:slug}', [BookController::class, 'show']);
