@@ -26,6 +26,8 @@ class CreateBooksTable extends Migration
             $table->date('publish_date');
             $table->integer('pages');
             $table->string('language');
+            $table->timestamp('updated_at')->nullable(); 
+            $table->timestamp('created_at')->nullable(); 
         });
     }
 
