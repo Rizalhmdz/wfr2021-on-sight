@@ -1,5 +1,6 @@
 <?php
 
+namespace Database\Seeders;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
