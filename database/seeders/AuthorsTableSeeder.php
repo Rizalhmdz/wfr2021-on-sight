@@ -18,7 +18,7 @@ class AuthorsTableSeeder extends Seeder
         $authors = [];
 
         for($i = 1; $i <= 8; $i++)
-        {
+        {wf
             $authors [] = [
                 'name' => $faker->name,
                 'slug'=> $faker->slug(2),

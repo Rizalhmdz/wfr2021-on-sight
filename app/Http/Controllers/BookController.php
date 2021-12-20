@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\book;
+use App\book;
 use Illuminate\Htp\Request;
 use App\Http\Controllers\Controller;
 
@@ -42,7 +42,7 @@ class BookController extends Controller
             ->orderBy('discount_rate', 'desc')
             ->take(6)
             ->get();
-        return view('public.home', compact('engineering_books', 'discount_books', 'literature_books'));
+        return view('home', compact('engineering_books', 'discount_books', 'literature_books'));
     }
     public function allBooks()
     {
@@ -51,48 +51,49 @@ class BookController extends Controller
                     ->orderBy('id', 'DESC')
                     ->search(request('term')) #...Search Query
                     ->paginate(16);
-        return view('public.book-page', compact('books'));
+        // return view('home', compact('books'));
+        return view('home', ["title" => "Books"], compact('books'));
     }
-    public function discountBooks()
-    {
-        # ComposerServiceProvider load here
-        $discountTitle = "All discount books";
-        $books = Book::with('author', 'image', 'category')
-            ->orderBy('discount_rate', 'DESC')
-            ->where('discount_rate', '>', 0)
-            ->paginate(16);
-        return view('public.book-page', compact('books', 'discountTitle'));
-    }
-    /*
-     * Books filter by category
-     */
-    public function category(Category $category)
-    {
-        $categoryName = $category->name;
-        $books = $category->books()
-            ->with('category', 'author', 'image')
-            ->orderBy('id','DESC')
-            ->paginate(16);
-        return view('public.book-page', compact('books', 'categoryName'));
-    }
-    /*
-     * Books filter by author
-     */
-    public function author(Author $author)
-    {
-        $authorName = $author->name;
-        $books = $author->books()
-            ->with('category', 'author', 'image')
-            ->orderBy('id', 'DESC')
-            ->paginate(12);
-        return view('public.book-page', compact('books', 'authorName'));
-    }
+    // public function discountBooks()
+    // {
+    //     # ComposerServiceProvider load here
+    //     $discountTitle = "All discount books";
+    //     $books = Book::with('author', 'image', 'category')
+    //         ->orderBy('discount_rate', 'DESC')
+    //         ->where('discount_rate', '>', 0)
+    //         ->paginate(16);
+    //     return view('public.book-page', compact('books', 'discountTitle'));
+    // }
+    // /*
+    //  * Books filter by category
+    //  */
+    // public function category(Category $category)
+    // {
+    //     $categoryName = $category->name;
+    //     $books = $category->books()
+    //         ->with('category', 'author', 'image')
+    //         ->orderBy('id','DESC')
+    //         ->paginate(16);
+    //     return view('public.book-page', compact('books', 'categoryName'));
+    // }
+    // /*
+    //  * Books filter by author
+    //  */
+    // public function author(Author $author)
+    // {
+    //     $authorName = $author->name;
+    //     $books = $author->books()
+    //         ->with('category', 'author', 'image')
+    //         ->orderBy('id', 'DESC')
+    //         ->paginate(12);
+    //     return view('public.book-page', compact('books', 'authorName'));
+    // }
 
-    public function bookDetails($id)
-    {
-        $book = Book::findOrFail($id);
-        $book_reviews = $book->reviews()->latest()->get();
-        return view('public.book-details' , compact('book', 'book_reviews'));
-    }
+    // public function bookDetails($id)
+    // {
+    //     $book = Book::findOrFail($id);
+    //     $book_reviews = $book->reviews()->latest()->get();
+    //     return view('public.book-details' , compact('book', 'book_reviews'));
+    // }
 }
 

@@ -49,11 +49,11 @@
         
         @foreach ($books as $book)
           <div class="col-lg-3 col-md-3 portfolio-item filter-literary">
-            <img src="assets/img/cover/{{ $book->cover }}" class="img-fluid" alt="">
+            <img src="{{ $book -> image_url}}" class="img-fluid" alt="">
             <div class="portfolio-info">
               <h4>{{ $book->title }}</h4>
-              <p>{{ $book->author }}</p>
-              <a href="assets/img/cover/the last professional.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <p>{{ $book->author -> name }}</p>
+              <a href="{{ $book -> image_url}}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
               <a href="/{{ $book->slug }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>

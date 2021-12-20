@@ -18,7 +18,8 @@ use App\Http\Controllers\AdminController;
 */
 
 
-Route::get('/', [BookController::class, 'index']);
+// Route::get('/', [BookController::class, 'allBooks']);
+Route::get('/', [BookController::class, 'allBooks']);
 // Route::get('/', 'BookshopHomeController@index')->name('bookshop.home');
 
 // Route::get('/chart', function () {
@@ -27,7 +28,7 @@ Route::get('/', [BookController::class, 'index']);
 //     ]);
 // });
 
-Route::get('/login', function () {
+Route::post('/login', function () {
     return view('login');
 });
 

@@ -63,7 +63,7 @@
                     <p class="text-center small">Enter your username & password to login</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <!-- <form class="row g-3 needs-validation" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
@@ -92,8 +92,40 @@
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="/signup">Create an account</a></p>
                     </div>
-                  </form>
+                  </form> -->
+                  <form method="post" action="{{url('/login')}}">
+                                {{csrf_field()}}
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" value="{{old('email')}}" class="form-control {{$errors->has('email')? 'is-invalid': ''}} form-control-sm">
 
+                                    @if($errors->has('email'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{$errors->first('email')}}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" class="form-control {{$errors->has('password')? 'is-invalid': ''}} form-control-sm">
+                                    @if($errors->has('password'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{$errors->first('password')}}</strong>
+                                        </span>
+                                    @endif
+
+                                    <div><small><a href="#" class="text-muted">Forget password</a></small></div>
+
+                                </div>
+                                <div class="checkbox icheck">
+                                    <label>
+                                        <input type="checkbox" name="remember"> Remember Me
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success btn-block btn-md">Login</button>
+                                </div>
+                            </form>
                 </div>
               </div>
 
