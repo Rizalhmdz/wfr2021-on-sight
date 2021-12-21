@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\book;
+use App\Models\Book;
 use Illuminate\Htp\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,12 +16,12 @@ class BookController extends Controller
     // }
 
 
-    // public function show(Book $book){
-    //     return view('book', [
-    //         "title" => "Single book",
-    //         "book" => $book
-    //     ]);
-    // }
+    public function show(Book $book){
+        return view('book', [
+            "title" => "Single book",
+            "book" => $book
+        ]);
+    }
 
     public function index()
     {
@@ -42,18 +42,23 @@ class BookController extends Controller
             ->orderBy('discount_rate', 'desc')
             ->take(6)
             ->get();
-        return view('home', compact('engineering_books', 'discount_books', 'literature_books'));
-    }
-    public function allBooks()
-    {
-        # ComposerServiceProvider load here
         $books = Book::with('author', 'image', 'category')
-                    ->orderBy('id', 'DESC')
-                    ->search(request('term')) #...Search Query
-                    ->paginate(16);
-        // return view('home', compact('books'));
-        return view('home', ["title" => "Books"], compact('books'));
+            ->orderBy('id', 'DESC')
+            ->search(request('term')) #...Search Query
+            ->paginate(16);
+        return view('home',
+                    compact('engineering_books', 'discount_books', 'literature_books', 'books'));
     }
+    // public function allBooks()
+    // {
+    //     # ComposerServiceProvider load here
+    //     $books = Book::with('author', 'image', 'category')
+    //                 ->orderBy('id', 'DESC')
+    //                 ->search(request('term')) #...Search Query
+    //                 ->paginate(16);
+    //     // return view('home', compact('books'));
+    //     return view('home', ["title" => "Books"], compact('books'));
+    // }
     // public function discountBooks()
     // {
     //     # ComposerServiceProvider load here
