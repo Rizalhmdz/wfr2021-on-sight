@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Book;
 use Illuminate\Htp\Request;
 use App\Http\Controllers\Controller;
 

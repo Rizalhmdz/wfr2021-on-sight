@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Book;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -39,13 +38,13 @@ class HomeController extends Controller
             ->orderBy('discount_rate', 'desc')
             ->take(6)
             ->get();
-    
+
         # ComposerServiceProvider load here
         $books = Book::with('author', 'image', 'category')
             ->orderBy('id', 'DESC')
             ->search(request('term')) #...Search Query
             ->paginate(16);
-    
+
         return view('home', compact('engineering_books', 'discount_books', 'literature_books', 'books'));
     }
 }

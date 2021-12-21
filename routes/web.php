@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LogoutAccountController;
 
 
 /*
@@ -51,4 +52,5 @@ Route::get('/admin', function () {
 // Auth::routes();
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/logout', [LogoutAccountController::class, 'logout'])->name('logout');
