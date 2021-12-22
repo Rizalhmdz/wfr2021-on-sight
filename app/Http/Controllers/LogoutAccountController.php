@@ -10,6 +10,6 @@ class LogoutAccountController extends Controller
         //logout user
         auth()->logout();
         // redirect to homepage
-        return redirect('/home')->with('logout_message', "You logged out successfully.");
+        return redirect('/')->with('logout_message', "You logged out successfully.");
     }
 }

@@ -44,7 +44,8 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/books">
+            <a class="nav-link" href="{{route('books.index')}}">
+
               <i class="bi bi-circle"></i><span>Books</span>
             </a>
           </li>

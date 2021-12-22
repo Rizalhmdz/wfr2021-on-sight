@@ -2,7 +2,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/home" class="logo d-flex align-items-center">
+      <a href="{{ route('home') }}" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" height="30" alt="">
       </a>
       {{-- <i class="bi bi-list toggle-sidebar-btn"></i> --}}
@@ -56,7 +56,7 @@
             </li>
 
             <li>
-                <span><form method="POST" action="/logout">
+                <span><form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <center><input class="btn btn-failed" type="submit" value="LOGOUT"><center>
                     </form></span>

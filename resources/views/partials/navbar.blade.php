@@ -8,8 +8,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-        @if(Auth::user()->role->name == "Admin")
-        @elseif(Auth::user()->role->name == "User")
+        @if(Auth::user()->role_id == 1)
+        @elseif(Auth::user()->role_id == 2)
             <li><a class="nav-link scrollto active" href="{{ route('home') }}">Home</a></li>
             <li><a class="nav-link scrollto" href="">My Chart</a></li>
             <li><a class="nav-link scrollto" href="">Favorites</a></li>
@@ -48,7 +48,7 @@
               </li>
 
               <li>
-                  <span><form method="POST" action="/logout">
+                  <span><form method="POST" action="{{ route('logout') }}">
                       @csrf
                       <center><input class="btn btn-failed" type="submit" value="LOGOUT"><center>
                       </form></span>
