@@ -1,60 +1,223 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
-
-  <!-- CSS only -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>  
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-</head>
+@extends('layouts.user_main')
+@section('container')
 
 
-<body>
+    <div class="hero-content" data-aos="fade-up">
+      <h2>Find Your Reading Books</h2>
+      <div>
+        <a href="#portfolio" class="btn-projects scrollto">Get Started</a>
+      </div>
+    </div>
 
-    @include('partials.navbar')
+    <div class="hero-slider swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/c1.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/c2.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/c3.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/c4.jpg');"></div>
+        <div class="swiper-slide" style="background-image: url('assets/img/hero-carousel/c5.jpg');"></div>
+      </div>
+    </div>
 
-    @yield('container')
+  </section><!-- End Hero Section -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong>Reveal</strong>. All Rights Reserved
+  <main id="main">
+
+     <!-- ======= Portfolio Section ======= -->
+     <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+        {{-- <div class="section-header">
+          <h2>Categories</h2>
+          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+        </div> --}}
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-literary">Literary</li>
+              <li data-filter=".filter-card">Novels</li>
+              <li data-filter=".filter-web">Comics</li>
+              <li data-filter=".filter-web">Comics</li>
+            </ul>
+          </div>
         </div>
-        <div class="credits">
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        @foreach ($books as $book)
+          <div class="col-lg-3 col-md-3 portfolio-item filter-literary">
+            <img src="assets/img/cover/{{ $book->cover }}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{ $book->title }}</h4>
+              <p>{{ $book->author }}</p>
+              <a href="assets/img/cover/the last professional.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="/{{ $book->slug }}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        @endforeach
+
         </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
         </div>
-    </footer><!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <div class="row gy-4">
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="box">
+              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident etiro rabeta lingo.</p>
+            </div>
+          </div>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <div class="icon"><i class="bi bi-card-checklist"></i></div>
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata nodera clas.</p>
+            </div>
+          </div>
 
-</body>
-</html>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="box">
+              <div class="icon"><i class="bi bi-bar-chart"></i></div>
+              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trinige zareta lobur trade.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-binoculars"></i></div>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum rideta zanox satirente madera</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Clients</h2>
+          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+        </div>
+
+        <div class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Testimonials</h2>
+          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                </p>
+                <img src="assets/img/testimonial-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                </p>
+                <img src="assets/img/testimonial-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                </p>
+                <img src="assets/img/testimonial-3.jpg" class="testimonial-img" alt="">
+                <h3>Jena Karlis</h3>
+                <h4>Store Owner</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                </p>
+                <img src="assets/img/testimonial-4.jpg" class="testimonial-img" alt="">
+                <h3>Matt Brandon</h3>
+                <h4>Freelancer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <img src="assets/img/quote-sign-left.png" class="quote-sign-left" alt="">
+                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  <img src="assets/img/quote-sign-right.png" class="quote-sign-right" alt="">
+                </p>
+                <img src="assets/img/testimonial-5.jpg" class="testimonial-img" alt="">
+                <h3>John Larson</h3>
+                <h4>Entrepreneur</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+  </main><!-- End #main -->
+  @endsection

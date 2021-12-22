@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $engineering_books = Book::with('category')->whereHas('category', function($query) {
+        $engineering_books = Book::with('category',  'author', 'image')->whereHas('category', function($query) {
             $query->where('slug', 'engineering'); })
             ->take(8)
             ->latestFirst()
@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->take(4)
             ->latestFirst()
             ->get();
-        $discount_books = Book::with('category')
+        $discount_books = Book::with('category',  'author', 'image')
             ->where('discount_rate', '>', 0)
             ->orderBy('discount_rate', 'desc')
             ->take(6)

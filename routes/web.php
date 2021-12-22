@@ -1,11 +1,12 @@
 <?php
 
-use App\Models\Book;
+use App\Book;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoutAccountController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -37,20 +38,21 @@ use App\Http\Controllers\LogoutAccountController;
 // Route::get('/signup', function () {
 //     return view('signup');
 // });
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');;
 
 Route::get('/admin', function () {
-    return view('admin');
+    return view('admin')->name('admin');
 });
+
+Route::get('/book/{book}', 'BookController@bookDetails')->name('book-details');
+
 
 // Route::get('/books', function (){
 //     return view('table');
 // });
 
-// Route::get('/{book:slug}', [BookController::class, 'show']);
+Route::get('/{book:slug}', [BookController::class, 'show'])->name('book-details');
 
 // Auth::routes();
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/logout', [LogoutAccountController::class, 'logout'])->name('logout');

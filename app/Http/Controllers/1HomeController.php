@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Book;
+use App\Book;
+use App\Author;
+use App\Category;
 
 class HomeController extends Controller
 {
