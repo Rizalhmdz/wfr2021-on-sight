@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -23,7 +23,7 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>  
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style-admin.css" rel="stylesheet">
@@ -36,8 +36,8 @@
   @include('partials.sidebar')
 
   @yield('container_admin')
-  
-  
+
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
